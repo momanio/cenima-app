@@ -1,24 +1,31 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Movie } from "../types/movie";
 import { getPopularMovies } from "../services/api";
 import MovieCard from "../components/MovieCard";
 
 const Movies = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const {
+    data: movies,
+    error,
+    isLoading,
+  } = useQuery<Movie[], Error>({
+    queryKey: ["popularMovies"],
+    queryFn: getPopularMovies,
+  });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const moviesData = await getPopularMovies();
-      console.log("Fetched Movies Data:", moviesData);
-      setMovies(moviesData);
-    };
-    fetchData();
-  }, []);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error fetching movies: {error.message}</div>;
+  }
+
   return (
     <div>
       <h2>Popular Movies</h2>
       <div className="movies-grid">
-        {movies.map((movie) => (
+        {movies?.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>

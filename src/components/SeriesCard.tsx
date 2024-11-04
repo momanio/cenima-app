@@ -7,7 +7,7 @@ interface SeriesCardProps {
 
 const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
   return (
-    <div className="tv-series-card">
+    <div className="h-full w-full bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 transition-transform transform hover:scale-105 hover:shadow-xl">
       {series.poster_path ? (
         <img
           src={`https://image.tmdb.org/t/p/w500${series.poster_path}`}

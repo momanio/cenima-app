@@ -1,32 +1,37 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { getPopularShows } from "../services/api";
 import type { Series } from "../types/series";
 import SeriesCard from "../components/SeriesCard";
 
 const Series = () => {
-  const [Shows, setShows] = useState<Series[]>([]);
+  const {
+    data: series,
+    error,
+    isLoading,
+  } = useQuery<Series[], Error>({
+    queryKey: ["getPopularShows"],
+    queryFn: getPopularShows,
+  });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const ShowsData = await getPopularShows();
-      console.log("Fetched TV Shows Data:", ShowsData);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-      setShows(ShowsData);
-    };
-    fetchData();
-  }, []);
+  if (error) {
+    return <div>Error fetching movies: {error.message}</div>;
+  }
 
   return (
     <div>
       {" "}
       <h2>Popular TV Shows</h2>
       {
-        <div className="tvshows-grid">
-          {Shows.filter(
-            (Show) => Show.poster_path && Show.name && Show.overview
-          ).map((Show) => (
-            <SeriesCard key={Show.id} series={Show} />
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-4">
+          {series
+            ?.filter((Show) => Show.poster_path && Show.name && Show.overview)
+            .map((Show) => (
+              <SeriesCard key={Show.id} series={Show} />
+            ))}
         </div>
       }
     </div>
