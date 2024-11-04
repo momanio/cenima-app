@@ -1,5 +1,1 @@
 /// <reference types="vite/client" />
-VITE_APP_BASE_URL = "https://api.themoviedb.org/3";
-VITE_APP_API_KEY = "96e6bb9b120840d0c0aa6cf73f5fb336";
-VITE_APP_ACCESS_TOKEN =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NmU2YmI5YjEyMDg0MGQwYzBhYTZjZjczZjVmYjMzNiIsIm5iZiI6MTczMDYyNjU2Ni43NjI5ODQsInN1YiI6IjY3MjczZTEwMzk4YzkwNDNmODBkMTU5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.I23tyP3UMjxFPAC67LN5CCtwEY2-LYdXX23uInAHqaU";

@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+.nav-links::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 3px;
+  background: #292929;
+  margin: auto;
+  transition: 0.5s;
+}
+
+.nav-links:hover::after {
+  width: 70%;
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

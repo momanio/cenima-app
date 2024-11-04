@@ -1,7 +1,7 @@
-import { createBrowserRouter } from "react-router-dom";
-import { Home } from "../components/home";
-import { MovieList } from "../components/MovieList";
-import { SeriesList } from "../components/SeriesList";
+/* import { createBrowserRouter } from "react-router-dom";
+import { Home } from "../pages/Home";
+import { MovieCard } from "../components/MovieCard";
+import { SeriesCard } from "../components/SeriesCard";
 
 export const router = createBrowserRouter([
   {
@@ -10,11 +10,12 @@ export const router = createBrowserRouter([
   },
   {
     path: "/movies",
-    element: <MovieList />,
+    element: <MovieCard />,
   },
   {
     path: "/series",
 
-    element: <SeriesList />,
+    element: <SeriesCard />,
   },
 ]);
+ */
