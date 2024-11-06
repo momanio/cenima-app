@@ -13,7 +13,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
         <img
           src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
           alt={movie.title}
-          className="w-full h-64 object-cover"
+          className="w-full h-64 object-cover rounded-t-md"
         />
       </Link>
       <div className="p-4">
