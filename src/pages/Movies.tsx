@@ -5,16 +5,14 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { useQuery } from "@tanstack/react-query";
 import { Movie } from "../types/movie";
 import { getPopularMovies } from "../services/api";
-import MovieCard from "../components/MovieCard";
 
-import "../styles.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
 const Movies = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);
-  const [activeMoviePoster, setActiveMoviePoster] = useState<string | null>(
-    null
-  );
 
   const {
     data: movies,
@@ -32,76 +30,57 @@ const Movies = () => {
     }
   }, [thumbsSwiper]);
 
-  useEffect(() => {
-    setActiveMoviePoster(movies?.[0]?.poster_path || null);
-  }, [movies]);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error fetching movies: {error.message}</div>;
-  }
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error fetching movies: {error.message}</div>;
 
   return (
-    <div
-      style={{
-        backgroundImage: activeMoviePoster
-          ? `url(https://image.tmdb.org/t/p/w500${activeMoviePoster})`
-          : "none",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <h2>Popular Movies</h2>
+    <div className="bg-gray-900">
+      <div className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-white mb-8">Popular Movies</h2>
 
-      <Swiper
-        style={
-          {
-            "--swiper-navigation-color": "#fff",
-            "--swiper-pagination-color": "#fff",
-          } as React.CSSProperties
-        }
-        spaceBetween={10}
-        navigation={true}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2"
-        onInit={(swiper) => {
-          mainSwiperRef.current = swiper;
-        }}
-        onSlideChange={(swiper) => {
-          setActiveMoviePoster(
-            movies?.[swiper.activeIndex]?.poster_path || null
-          );
-        }}
-      >
-        {movies?.map((movie) => (
-          <SwiperSlide key={movie.id}>
-            <MovieCard movie={movie} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        <Swiper
+          spaceBetween={30}
+          slidesPerView={1}
+          centeredSlides={true}
+          loop={true}
+          navigation={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="mainSwiper mb-8"
+          onInit={(swiper) => {
+            mainSwiperRef.current = swiper;
+          }}
+        >
+          {movies?.map((movie) => (
+            <SwiperSlide key={movie.id} className="rounded-lg overflow-hidden">
+              <img
+                src={`https://image.tmdb.org/t/p/w200${movie.backdrop_path}`}
+                alt={movie.title}
+                className="w-full h-auto object-cover rounded-lg opacity-70 hover:opacity-100 transition duration-300"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        spaceBetween={10}
-        slidesPerView={4}
-        freeMode={true}
-        watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper"
-      >
-        {movies?.map((movie) => (
-          <SwiperSlide key={movie.id}>
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-              className="w-full h-auto object-cover"
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        <Swiper
+          onSwiper={setThumbsSwiper}
+          spaceBetween={10}
+          slidesPerView={5}
+          freeMode={true}
+          watchSlidesProgress={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="thumbsSwiper"
+        >
+          {movies?.map((movie) => (
+            <SwiperSlide key={movie.id} className="rounded-lg overflow-hidden">
+              <img
+                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                alt={movie.title}
+                className="w-full h-auto object-cover rounded-lg opacity-70 hover:opacity-100 transition duration-300"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 };

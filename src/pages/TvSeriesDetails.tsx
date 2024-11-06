@@ -45,7 +45,7 @@ const TvSeriesDetails: React.FC = () => {
 
   return (
     <div
-      className="p-4"
+      className="p-40"
       style={{
         backgroundImage: activeSeriesPoster
           ? `url(https://image.tmdb.org/t/p/w500${activeSeriesPoster})`
@@ -82,12 +82,6 @@ const TvSeriesDetails: React.FC = () => {
         </p>
 
         <div className="mt-6">
-          <label
-            htmlFor="season-select"
-            className="block text-xl font-bold mb-2"
-          >
-            Select Season:
-          </label>
           <select
             id="season-select"
             className="bg-gray-800 text-white p-2 rounded"
@@ -96,7 +90,7 @@ const TvSeriesDetails: React.FC = () => {
           >
             {series.seasons.map((season) => (
               <option key={season.id} value={season.season_number}>
-                Season {season.season_number} - {season.name}
+                Season {season.season_number}
               </option>
             ))}
           </select>
