@@ -36,5 +36,6 @@ export async function getShowDetails(showId: number): Promise<Series> {
       params: { api_key: API_KEY },
     }
   );
+  console.log(response.data);
   return response.data;
 }

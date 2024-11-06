@@ -7,6 +7,8 @@ import { Movie } from "../types/movie";
 import { getPopularMovies } from "../services/api";
 import MovieCard from "../components/MovieCard";
 
+import "../styles.css";
+
 const Movies = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);

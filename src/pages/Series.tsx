@@ -22,7 +22,7 @@ const Series = () => {
   }
 
   return (
-    <div>
+    <div className="p-4">
       {" "}
       <h2>Popular TV Shows</h2>
       {
