@@ -1,3 +1,7 @@
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
 import { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
@@ -5,11 +9,6 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { useQuery } from "@tanstack/react-query";
 import { getPopularShows } from "../services/api";
 import type { Series } from "../types/series";
-import SeriesCard from "../components/SeriesCard";
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
 import { Link } from "react-router-dom";
 
 const Series = () => {
