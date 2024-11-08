@@ -102,7 +102,6 @@ const Contact = () => {
             )}
           </label>
 
-          {/* Message Textarea */}
           <label className="flex flex-col">
             <span className="text-timberWolf font-medium mb-4">
               Your Message
@@ -117,7 +116,6 @@ const Contact = () => {
             )}
           </label>
 
-          {/* Submit Button */}
           <button
             type="submit"
             className="flex items-center justify-center gap-3 text-white font-bold py-3 px-6 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 hover:from-blue-500 hover:to-purple-500 transition duration-200 shadow-md transform hover:scale-105"
@@ -126,7 +124,6 @@ const Contact = () => {
           </button>
         </form>
 
-        {/* Dynamic message display */}
         {message && (
           <div
             className={`mt-4 p-4 rounded-md text-center ${
