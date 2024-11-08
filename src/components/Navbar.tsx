@@ -19,6 +19,11 @@ const Navbar = () => {
             Series
           </Link>
         </li>
+        <li>
+          <Link to="/contact" className="px-2 py-1 sm:px-4 sm:py-2">
+            Contact
+          </Link>
+        </li>
       </ul>
     </nav>
   );
