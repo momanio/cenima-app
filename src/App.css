@@ -14,48 +14,19 @@
   text-align: center;
 }
 
-.movie-card img,
-.tv-series-card img {
-  max-width: 100%;
-  border-radius: 5px;
-}
-
-h2 {
-  font-size: 24px;
-  margin-top: 40px;
-}
-.movie-card img {
+.movie-card,
+.tv-series-card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds subtle shadow */
+  background-color: #1e1e1e; /* Darker background for contrast */
+  color: #fff;
   border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.movie-card:hover img {
-  transform: scale(1.05);
-}
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
+  padding: 15px;
   text-align: center;
-  font-size: 18px;
-  background: #fff;
-
-  /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-body {
-  background: #000;
-  color: #000;
+.movie-card:hover,
+.tv-series-card:hover {
+  transform: scale(1.03); /* Slight zoom on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
 }

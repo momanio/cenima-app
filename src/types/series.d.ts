@@ -13,4 +13,5 @@ export interface Series {
   vote_count: number;
   seasons: Season[];
   number_of_episodes: number;
+  first_air_date: string;
 }
