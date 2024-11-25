@@ -10,7 +10,7 @@ const MovieDetails = React.lazy(() => import("./pages/MovieDetails"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <div className="flex flex-col min-h-screen bg-gray-900">
@@ -30,6 +30,5 @@ function App() {
       </div>
     </BrowserRouter>
   );
-}
-
+};
 export default App;
